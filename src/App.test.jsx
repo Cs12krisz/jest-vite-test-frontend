@@ -1,4 +1,4 @@
-import {describe, test, expect} from "bun:test"
+import {describe, test, expect } from "bun:test"
 import React from "react"
 import {render, fireEvent } from "@testing-library/react"
 import { App } from "./App"
@@ -18,5 +18,13 @@ describe("App komponens", () => {
         expect(usernameInput.value).toBe('user')
         expect(passwordInput.value).toBe('password')
 
+    })
+
+    test("A Bejelentkezés szövegű cím és gomb megjelenik-e", async () => {
+        const {getAllByText} = render(<App/>);
+        const loginElemek =  getAllByText('Bejelentkezés');
+        loginElemek.forEach(element => {
+            expect(element).toBeInTheDocument()
+        });
     })
 } )
